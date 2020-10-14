@@ -4,14 +4,13 @@ const todoModel = require('../models/todo');
 
 router.post('/createtodo',async (req,res)=>{
     //destructuring
-    const {userId, title, description, createdAt, toBeDoneAt, completed} = req.body;
+    const {userId, title, description, toBeDoneAt, completed} = req.body;
 
     //create new Todo
     const todo = new todoModel({
         userId,
         title,
         description,
-        createdAt,
         toBeDoneAt,
         completed
     })  
