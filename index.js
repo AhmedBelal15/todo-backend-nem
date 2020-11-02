@@ -23,7 +23,9 @@ const createTodo = require("./routes/createTodo");
 const getTodos = require("./routes/getTodos");
 const removeTodo = require("./routes/removeTodo");
 const editTodo = require("./routes/editTodo");
-// const protectRoute = require('./authenticateToken')
+const resetPassword = require('./routes/resetPassword')
+const updatePassword = require('./routes/updatePassword')
+const markTodo = require('./routes/markTodo')
 
 //route middlewares
 app.use("/api/user", registerAuth);
@@ -32,6 +34,9 @@ app.use("/api/user", createTodo);
 app.use("/api/user", getTodos);
 app.use("/api/user", removeTodo);
 app.use("/api/user", editTodo);
+app.use('/api/user', resetPassword)
+app.use('/api/user', updatePassword)
+app.use('/api/user', markTodo)
 // Connect to database
 mongoose
   .connect(process.env.DB_CONNECTION, {
