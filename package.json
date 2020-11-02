@@ -14,9 +14,10 @@
     "dayjs": "^1.9.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "helmet": "^4.1.1",
     "joi": "^17.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.27",
-    "nodemailer": "^6.4.11"
+    "nodemailer": "^6.4.14"
   }
 }

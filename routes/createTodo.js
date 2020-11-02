@@ -1,28 +1,30 @@
-const router = require('express').Router();
-const todoModel = require('../models/todo');
-// const protect = require('../authenticateToken')
+const router = require("express").Router();
+const todoModel = require("../models/todo");
+const protect = require("../middlewares/protect");
 
-router.post('/createtodo',async (req,res)=>{
-    //destructuring
-    const {userId, title, description, createdAt, toBeDoneAt, completed} = req.body;
+router.post("/createtodo", protect, async (req, res) => {
+  //destructuring
+  const { userId, title, description, toBeDoneAt, completed } = req.body;
+  //create new Todo
+  const todo = new todoModel({
+    userId,
+    title,
+    description,
+    toBeDoneAt,
+    completed,
+  });
 
-    //create new Todo
-    const todo = new todoModel({
-        userId,
-        title,
-        description,
-        createdAt,
-        toBeDoneAt,
-        completed
-    })  
-    try {
-        const savedTodo = await todo.save()
-        res.send(savedTodo)  
-    } catch (error) {
-        res.status(400).send(error)
-        console.log(error);
-    }
-    
-})
+  if (req.user !== userId) {
+    return res.status(401).send('Unauthorized');
+  }
 
-module.exports = router
+  try {
+    const savedTodo = await todo.save();
+    res.send(savedTodo);
+  } catch (error) {
+    res.status(400).send(error);
+    console.log(error._message);
+  }
+});
+
+module.exports = router;

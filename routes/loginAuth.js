@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const router = require('express').Router();
-const {loginSchema} = require('../validation');
+const {loginSchema} = require('../middlewares/validation');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
@@ -9,24 +9,6 @@ const User = require('../models/user');
 router.post('/login', async (req,res)=>{
 //destructuring
 const {email,password} = req.body
-
-
-//verify token
-
-// if(req.headers.auth) {
-
-//     try {
-//         const verified= jwt.verify(req.headers.auth, process.env.ACCESS_TOKEN_SECRET)
-//         return res.json(verified)
-
-//     } catch (error) {
-//        res.json({
-//            name: error.name,
-//            message: error.message,
-//            expiredAt: error.expiredAt
-//        })
-//     }
-// }
 
 
 //Validate request
@@ -54,7 +36,7 @@ if (!user) {
 
 if(compare === true) {
 
-    const accessToken = jwt.sign({_id: user._id }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '15s'})
+    const accessToken = jwt.sign({_id: user._id }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})
     const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
     const userObject = {...user._doc}
     delete(userObject.password)
