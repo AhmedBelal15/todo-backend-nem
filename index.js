@@ -28,7 +28,6 @@ const updatePassword = require('./routes/updatePassword')
 const markTodo = require('./routes/markTodo')
 
 //route middlewares
-app.use("/", (req,res)=> {res.json('we are online')});
 app.use("/api/user", registerAuth);
 app.use("/api/user", loginAuth);
 app.use("/api/user", createTodo);
