@@ -28,15 +28,15 @@ const updatePassword = require('./routes/updatePassword')
 const markTodo = require('./routes/markTodo')
 
 //route middlewares
-app.use("/api/user", registerAuth);
+app.use("/user", registerAuth);
 app.use("/user", loginAuth);
-app.use("/api/user", createTodo);
-app.use("/api/user", getTodos);
-app.use("/api/user", removeTodo);
-app.use("/api/user", editTodo);
-app.use('/api/user', resetPassword)
-app.use('/api/user', updatePassword)
-app.use('/api/user', markTodo)
+app.use("/user", createTodo);
+app.use("/", getTodos);
+app.use("/user", removeTodo);
+app.use("/user", editTodo);
+app.use('/user', resetPassword)
+app.use('/user', updatePassword)
+app.use('/user', markTodo)
 // Connect to database
 mongoose
   .connect(process.env.DB_CONNECTION, {
