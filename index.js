@@ -29,7 +29,7 @@ const markTodo = require('./routes/markTodo')
 
 //route middlewares
 app.use("/api/user", registerAuth);
-app.use("/api/user", loginAuth);
+app.use("api/user", loginAuth);
 app.use("/api/user", createTodo);
 app.use("/api/user", getTodos);
 app.use("/api/user", removeTodo);
