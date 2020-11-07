@@ -6,7 +6,7 @@ router.get("/gettodos", protect, async (req, res) => {
   const userId = req.user
   const page = parseInt(req.query.page) 
   const limit = parseInt(req.query.limit)
-  const startIndex = page - 1
+  const startIndex = (page - 1) * limit
   const endIndex = page * limit
   
   const results = {}

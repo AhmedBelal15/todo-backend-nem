@@ -37,7 +37,7 @@ if (!user) {
 if(compare === true) {
 
     const accessToken = jwt.sign({_id: user._id }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '1d'})
-    const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET)
+    const refreshToken = jwt.sign({_id: user._id}, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '30d'})
     const userObject = {...user._doc}
     delete(userObject.password)
     res.json({
