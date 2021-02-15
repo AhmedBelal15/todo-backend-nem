@@ -2,7 +2,7 @@ const todo = require('../models/todo')
 const router = require('express').Router()
 const protect = require("../middlewares/protect");
 
-router.put('/editTodo/:id', protect, async (req,res)=>{
+router.put('/:id', protect, async (req,res)=>{
     const{title, description, toBeDoneAt} = req.body
     const toBeEdited = await todo.findOne({_id: req.params.id})
     if(toBeEdited.userId !== req.user){res.send('Unauthorized')}

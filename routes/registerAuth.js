@@ -3,7 +3,7 @@ const userModel = require('../models/user');
 const {registerSchema,} = require('../middlewares/validation');
 const bcrypt = require('bcryptjs')
 
-router.post('/register', async (req,res)=>{
+router.post('/', async (req,res)=>{
 //destrcuturing data
    const {name,email,password,confirmPassword} = req.body;
 

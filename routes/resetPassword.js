@@ -3,7 +3,7 @@ const router = require("express").Router();
 const nodemailer = require('nodemailer')
 const User = require("../models/user");
 
-router.post("/resetpassword", async (req, res) => {
+router.post("/", async (req, res) => {
 // Check if email exist
   const user = await User.findOne({ email: req.body.email });
   if (!user) {

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const todoModel = require("../models/todo");
 const protect = require("../middlewares/protect");
 
-router.get("/gettodos", protect, async (req, res) => {
+router.get("/", protect, async (req, res) => {
   const userId = req.user
   const page = parseInt(req.query.page) 
   const limit = parseInt(req.query.limit)

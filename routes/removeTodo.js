@@ -2,7 +2,7 @@ const router = require("express").Router();
 const todo = require("../models/todo");
 const protect = require("../middlewares/protect");
 
-router.delete("/removeTodo/:id", protect,async (req, res) => {
+router.delete("/:id", protect,async (req, res) => {
   const toBeRemoved = await todo.findOne({_id: req.params.id})
   if(req.user !== toBeRemoved.userId){return res.status(401).send('Unauthorized')}
   try {

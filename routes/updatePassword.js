@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const { passwordSchema } = require('../middlewares/validation');
 const bcrypt = require("bcryptjs");
 
-router.put("/updatepassword/:resetToken", async (req, res) => {
+router.put("/:resetToken", async (req, res) => {
   //find the user with the token
   const resetToken = req.params.resetToken;
   const hashedToken = crypto

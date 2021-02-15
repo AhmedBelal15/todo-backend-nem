@@ -6,7 +6,7 @@ const User = require('../models/user');
 
 
 
-router.post('/login', async (req,res)=>{
+router.post('/', async (req,res)=>{
 //destructuring
 const {email,password} = req.body
 

@@ -2,7 +2,7 @@ const router = require("express").Router();
 const todoModel = require("../models/todo");
 const protect = require("../middlewares/protect");
 
-router.post("/createtodo", protect, async (req, res) => {
+router.post("/", protect, async (req, res) => {
   //destructuring
   const { userId, title, description, toBeDoneAt, completed } = req.body;
   //create new Todo
